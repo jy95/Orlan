@@ -1,8 +1,7 @@
 import { TYPES, NUMBERS } from './Card';
-
 const MIN_CARD_AMOUNT = 3;
 
-class Combination {
+export default class Combination {
 
     constructor() {
         this._cardsPlayed = [];
@@ -88,4 +87,42 @@ class Combination {
         return this.sameColor() && this.isOrdered();
     }
 
+    getValue() {
+        // not a valid combination
+        if (! this.verification()){
+            return 0;
+        } else if ( this.sameValueCardCheck() ) {
+            let myCard = this._cardsPlayed.find( (card) => card.getType() !== TYPES.JOKER );
+
+            return ( myCard.getNumber() >= 10 || myCard.getNumber() === NUMBERS.ACE )
+                ? this._cardsPlayed.length * 10
+                : this._cardsPlayed.length * myCard.getNumber();
+        } else {
+
+            let first_element = this._cardsPlayed.find( (card) => card.getType() !== TYPES.JOKER );
+            let correct_order = Combination.correct_order();
+            let first_index = correct_order.findIndex( (number) => number === first_element.getValue() );
+            // compute value of successive cards
+            let value = 0;
+            for ( let index = 0 ; index < this._cardsPlayed.length ; index++ ) {
+                let number = correct_order[first_index + index];
+                // multiple case depending of the number
+                if ( number >= 10 || ( number === NUMBERS.ACE && index + first_index !== 0 ) ) {
+                    value += 10;
+                } else {
+                    value += number;
+                }
+            }
+            // in some case, we must find the value of the joker before the first not joker element
+            if ( this._cardsPlayed[0] !== first_element ) {
+                let number = correct_order[first_index - 1];
+                if ( number >= 10 ) {
+                    value += 10;
+                } else {
+                    value += number;
+                }
+            }
+            return value;
+        }
+    }
 }
