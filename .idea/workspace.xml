@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="ff9e6abc-64ec-4bdc-a6d8-cafd130a66f9" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game_algorithm/Combination.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/game_algorithm/Combination.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/node_modules/" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -16,24 +15,21 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/game_algorithm/Combination.test.js">
+    <leaf>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.circleci/config.yml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="131">
-              <caret line="94" column="36" selection-start-line="94" selection-start-column="36" selection-end-line="94" selection-end-column="36" />
-              <folding>
-                <element signature="e#0#39#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="68">
+              <caret line="4" column="33" selection-start-line="4" selection-start-column="33" selection-end-line="4" selection-end-column="33" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/game_algorithm/Combination.js">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/package.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="131">
-              <caret line="114" column="76" selection-start-line="114" selection-start-column="76" selection-end-line="114" selection-end-column="76" />
+            <state relative-caret-position="255">
+              <caret line="15" column="22" selection-start-line="15" selection-start-column="22" selection-end-line="15" selection-end-column="22" />
             </state>
           </provider>
         </entry>
@@ -66,6 +62,7 @@
       <find>undefined</find>
       <find>verification</find>
       <find>logicalSequenceCheck</find>
+      <find>jest</find>
     </findStrings>
     <replaceStrings>
       <replace>NUMBERS.ACE</replace>
@@ -88,6 +85,7 @@
         <option value="$PROJECT_DIR$/src/game_algorithm/Card.js" />
         <option value="$PROJECT_DIR$/src/game_algorithm/Combination.test.js" />
         <option value="$PROJECT_DIR$/src/game_algorithm/Combination.js" />
+        <option value="$PROJECT_DIR$/.circleci/config.yml" />
       </list>
     </option>
   </component>
@@ -122,13 +120,7 @@
             <path>
               <item name="Orlan" type="b2602c69:ProjectViewProjectNode" />
               <item name="Orlan" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Orlan" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Orlan" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="game_algorithm" type="462c0819:PsiDirectoryNode" />
+              <item name="coverage" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -218,14 +210,12 @@
       <option name="presentableId" value="Default" />
       <updated>1548603891387</updated>
       <workItem from="1548603895674" duration="13861000" />
-      <workItem from="1548631441154" duration="12060000" />
+      <workItem from="1548631441154" duration="12369000" />
+      <workItem from="1548674054036" duration="1998000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="Hand_Combinations_tests____Hand_Combination___JOKER_QUEEN_KING_ACE_Test_n°5___getValue()_test - 2019.01.28 at 03h 30m 07s.xml">
-      <configuration name="Hand Combinations tests : .Hand Combination : JOKER QUEEN KING ACE.Test n°5 : getValue() test" configurationId="JavaScriptTestRunnerJest" />
-    </history-entry>
     <history-entry file="Hand_Combinations_tests____Hand_Combination___JOKER_QUEEN_KING_ACE_Test_n°5___getValue()_test - 2019.01.28 at 03h 40m 05s.xml">
       <configuration name="Hand Combinations tests : .Hand Combination : JOKER QUEEN KING ACE.Test n°5 : getValue() test" configurationId="JavaScriptTestRunnerJest" />
     </history-entry>
@@ -253,27 +243,30 @@
     <history-entry file="Hand_Combinations_tests____Hand_Combination___JOKER_QUEEN_KING_ACE_Test_n°5___getValue()_test - 2019.01.28 at 03h 45m 15s.xml">
       <configuration name="Hand Combinations tests : .Hand Combination : JOKER QUEEN KING ACE.Test n°5 : getValue() test" configurationId="JavaScriptTestRunnerJest" />
     </history-entry>
+    <history-entry file="Hand_Combinations_tests____Hand_Combination___JOKER_QUEEN_KING_ACE_Test_n°5___getValue()_test - 2019.01.28 at 03h 45m 30s.xml">
+      <configuration name="Hand Combinations tests : .Hand Combination : JOKER QUEEN KING ACE.Test n°5 : getValue() test" configurationId="JavaScriptTestRunnerJest" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="25921000" />
+    <option name="totallyTimeSpent" value="28228000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="86" y="32" width="1400" height="820" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2496329" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24566475" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32896653" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.57787484" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.57787484" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.5123726" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" />
-      <window_info anchor="bottom" id="Terminal" order="9" weight="0.32751092" />
+      <window_info anchor="bottom" id="Terminal" order="9" visible="true" weight="0.325811" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -289,19 +282,16 @@
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/game_algorithm/Card.js</url>
           <line>38</line>
-          <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="2" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/game_algorithm/Card.test.js</url>
           <line>18</line>
-          <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="3" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/game_algorithm/Combination.js</url>
           <line>115</line>
-          <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="8" />
         </line-breakpoint>
       </breakpoints>
@@ -337,9 +327,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
@@ -367,17 +354,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" column="14" selection-start-line="13" selection-start-column="14" selection-end-line="13" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/game_algorithm/Card.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="88">
           <caret line="13" column="4" selection-start-line="13" selection-start-column="4" selection-end-line="13" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/game_algorithm/Combination.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1426">
+          <caret line="121" column="1" lean-forward="true" selection-start-line="121" selection-start-column="1" selection-end-line="121" selection-end-column="1" />
         </state>
       </provider>
     </entry>
@@ -391,10 +378,36 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/game_algorithm/Combination.js">
+    <entry file="file://$PROJECT_DIR$/src/App.test.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="131">
-          <caret line="114" column="76" selection-start-line="114" selection-start-column="76" selection-end-line="114" selection-end-column="76" />
+        <state>
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package-lock.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="1869" column="15" selection-start-line="1869" selection-start-column="11" selection-end-line="1869" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" column="22" selection-start-line="15" selection-start-column="22" selection-end-line="15" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.circleci/config.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="33" selection-start-line="4" selection-start-column="33" selection-end-line="4" selection-end-column="33" />
         </state>
       </provider>
     </entry>
