@@ -1,4 +1,5 @@
-import { TYPES, NUMBERS } from './Card';
+import {TYPES, NUMBERS} from './Card';
+
 const MIN_CARD_AMOUNT = 3;
 
 export default class Combination {
@@ -11,7 +12,7 @@ export default class Combination {
 
     // the correct order of card for successive combination
     static correct_order() {
-        return [ NUMBERS.ACE, 2, 3, 4, 5, 6, 7, 8, 9, 10, NUMBERS.JACK, NUMBERS.QUEEN, NUMBERS.JACK, NUMBERS.ACE ];
+        return [NUMBERS.ACE, 2, 3, 4, 5, 6, 7, 8, 9, 10, NUMBERS.JACK, NUMBERS.QUEEN, NUMBERS.KING, NUMBERS.ACE];
     }
 
     // returns all the stored card(s)
@@ -20,7 +21,7 @@ export default class Combination {
     }
 
     // add a card at the end of the array
-    set addCard(card) {
+    addCard(card) {
         this._cardsPlayed.push(card);
         switch (card.getType()) {
 
@@ -38,7 +39,7 @@ export default class Combination {
     verification() {
         return this.requiredCardAmount()
             && !this.successiveJokers()
-            && ( this.logicalSequenceCheck() || this.sameValueCardCheck() );
+            && (this.logicalSequenceCheck() || this.sameValueCardCheck());
     }
 
     requiredCardAmount() {
@@ -52,33 +53,38 @@ export default class Combination {
         )
     }
 
-    // Example : 5 - 5 - 5 is valid if each 5 is a unique TYPE to each other
-    sameValueCardCheck() {
-        // get the first card that isn't a joker
-        let myCard = this._cardsPlayed.find( (card) => card.getType() !== TYPES.JOKER );
-        // count occurrence of this card
-        let count = this._cardsPlayed
-            .reduce(
-                (acc, card) =>
-                    ( card.getType() !== TYPES.JOKER && card.getNumber() === myCard.getNumber() ) ? acc + 1 : acc
-                , 0);
-        return this._colorPlayed.size === count;
+    differentColors() {
+        return this._cardsPlayed.length - this._colorPlayed.size - this._jokerPositions.length === 0;
     }
 
     sameColor() {
         return this._colorPlayed.size === 1;
     }
 
+    // Example : 5 - 5 - 5 is valid if each 5 is a unique TYPE to each other
+    sameValueCardCheck() {
+        // get the first card that isn't a joker
+        let myCard = this._cardsPlayed.find((card) => card.getType() !== TYPES.JOKER);
+        let result = this._cardsPlayed.reduce(
+            (acc, card) => (acc.valid) ? {
+                valid: card.getType() === TYPES.JOKER || card.getNumber() === acc.number,
+                number: acc.number
+            } : acc, {valid: true, number: myCard.getNumber()}
+        );
+
+        return result.valid && this.differentColors();
+    }
+
     isOrdered() {
         // first, find the first index of the sub array in master array
-        let first_element = this._cardsPlayed.find( (card) => card.getType() !== TYPES.JOKER );
+        let first_element = this._cardsPlayed.find((card) => card.getType() !== TYPES.JOKER);
         let correct_order = Combination.correct_order();
-        let first_index = correct_order.findIndex( (number) => number === first_element.getValue() );
+        let first_index = correct_order.findIndex((number) => number === first_element.getNumber());
         return this._cardsPlayed
             .every(
                 (card, index) =>
                     (card.getType() !== TYPES.JOKER)
-                        ? card.getValue() === correct_order[index + first_index]
+                        ? card.getNumber() === correct_order[index + first_index]
                         : true
             );
     }
@@ -89,34 +95,34 @@ export default class Combination {
 
     getValue() {
         // not a valid combination
-        if (! this.verification()){
+        if (!this.verification()) {
             return 0;
-        } else if ( this.sameValueCardCheck() ) {
-            let myCard = this._cardsPlayed.find( (card) => card.getType() !== TYPES.JOKER );
+        } else if (this.sameValueCardCheck()) {
+            let myCard = this._cardsPlayed.find((card) => card.getType() !== TYPES.JOKER);
 
-            return ( myCard.getNumber() >= 10 || myCard.getNumber() === NUMBERS.ACE )
+            return (myCard.getNumber() >= 10 || myCard.getNumber() === NUMBERS.ACE)
                 ? this._cardsPlayed.length * 10
                 : this._cardsPlayed.length * myCard.getNumber();
         } else {
 
-            let first_element = this._cardsPlayed.find( (card) => card.getType() !== TYPES.JOKER );
+            let first_element = this._cardsPlayed.find((card) => card.getType() !== TYPES.JOKER);
             let correct_order = Combination.correct_order();
-            let first_index = correct_order.findIndex( (number) => number === first_element.getValue() );
+            let first_index = correct_order.findIndex((number) => number === first_element.getNumber());
             // compute value of successive cards
             let value = 0;
-            for ( let index = 0 ; index < this._cardsPlayed.length ; index++ ) {
+            for (let index = 0; index < this._cardsPlayed.length; index++) {
                 let number = correct_order[first_index + index];
                 // multiple case depending of the number
-                if ( number >= 10 || ( number === NUMBERS.ACE && index + first_index !== 0 ) ) {
+                if (number >= 10 || (number === NUMBERS.ACE && index + first_index !== 0)) {
                     value += 10;
                 } else {
                     value += number;
                 }
             }
             // in some case, we must find the value of the joker before the first not joker element
-            if ( this._cardsPlayed[0] !== first_element ) {
+            if (this._cardsPlayed[0] !== first_element) {
                 let number = correct_order[first_index - 1];
-                if ( number >= 10 ) {
+                if (number >= 10) {
                     value += 10;
                 } else {
                     value += number;

@@ -17,8 +17,14 @@ export const NUMBERS = {
 
 export default class Card {
     constructor(type, number) {
-        this._type = type;
-        this._number = number;
+        // A JOKER CARD
+        if ( arguments.length === 0) {
+            this._type = TYPES.JOKER;
+        } else {
+            this._type = type;
+            this._number = number;
+        }
+
     }
 
     getType() {
@@ -30,9 +36,9 @@ export default class Card {
     }
 
     equals(other) {
-        return (other.isPrototypeOf(Card)
-            && other.hasOwnProperty('type')
-            && other.hasOwnProperty('number')) ?
-            (other.type === this.getType() && other.number === this.getNumber()) : false;
+        return (other instanceof Card
+            && 'getType' in other
+            && 'getNumber' in other) ?
+            (other.getType() === this.getType() && other.getNumber() === this.getNumber()) : false;
     }
 }
