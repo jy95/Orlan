@@ -37,9 +37,7 @@ export default class Combination {
 
     // match criteria(s)
     verification() {
-        return this.requiredCardAmount()
-            && !this.successiveJokers()
-            && (this.logicalSequenceCheck() || this.sameValueCardCheck());
+        return this.requiredCardAmount() && (this.logicalSequenceCheck() || this.sameValueCardCheck());
     }
 
     requiredCardAmount() {
@@ -71,8 +69,7 @@ export default class Combination {
                 number: acc.number
             } : acc, {valid: true, number: myCard.getNumber()}
         );
-
-        return result.valid && this.differentColors();
+        return this.differentColors() && !this.successiveJokers() && result.valid
     }
 
     isOrdered() {
@@ -80,17 +77,19 @@ export default class Combination {
         let first_element = this._cardsPlayed.find((card) => card.getType() !== TYPES.JOKER);
         let correct_order = Combination.correct_order();
         let first_index = correct_order.findIndex((number) => number === first_element.getNumber());
+        // shift to handle the algorithm
+        let shift = (this._cardsPlayed[0].getType() === TYPES.JOKER) ? -1 : 0;
         return this._cardsPlayed
             .every(
                 (card, index) =>
                     (card.getType() !== TYPES.JOKER)
-                        ? card.getNumber() === correct_order[index + first_index]
+                        ? card.getNumber() === correct_order[index + first_index + shift]
                         : true
             );
     }
 
     logicalSequenceCheck() {
-        return this.sameColor() && this.isOrdered();
+        return !this.successiveJokers() && this.sameColor() && this.isOrdered();
     }
 
     getValue() {
@@ -108,27 +107,16 @@ export default class Combination {
             let first_element = this._cardsPlayed.find((card) => card.getType() !== TYPES.JOKER);
             let correct_order = Combination.correct_order();
             let first_index = correct_order.findIndex((number) => number === first_element.getNumber());
+            // shift to handle the algorithm
+            let shift = (this._cardsPlayed[0].getType() === TYPES.JOKER) ? -1 : 0;
             // compute value of successive cards
-            let value = 0;
-            for (let index = 0; index < this._cardsPlayed.length; index++) {
-                let number = correct_order[first_index + index];
-                // multiple case depending of the number
-                if (number >= 10 || (number === NUMBERS.ACE && index + first_index !== 0)) {
-                    value += 10;
-                } else {
-                    value += number;
-                }
-            }
-            // in some case, we must find the value of the joker before the first not joker element
-            if (this._cardsPlayed[0] !== first_element) {
-                let number = correct_order[first_index - 1];
-                if (number >= 10) {
-                    value += 10;
-                } else {
-                    value += number;
-                }
-            }
-            return value;
+            return this._cardsPlayed.reduce(
+                (value, elem, index) => {
+                    let number = correct_order[first_index + index + shift];
+                    return ( number >= 10 || (number === NUMBERS.ACE && index + first_index !== 0) )
+                        ? value + 10
+                        : value + correct_order[first_index + index + shift]
+                }, 0);
         }
     }
 }
