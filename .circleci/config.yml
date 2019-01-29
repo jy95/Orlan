@@ -1,7 +1,7 @@
 version: 2 # use CircleCI 2.0
 jobs: # a collection of steps
   build: # runs not using Workflows must have a `build` job as entry point
-    working_directory: ~/mern-starter # directory where steps will run
+    working_directory: ~/orlan # directory where steps will run
     docker: # run the steps with Docker
       - image: circleci/node:10 # ...with this image as the primary container; this is where all `steps` will run
     steps: # a collection of executable commands
@@ -21,4 +21,15 @@ jobs: # a collection of steps
             - ./node_modules
       - run: # run tests
           name: test
-          command: 'npm test' # Later for the coverage 'npm test -- --coverage'
+          command: 'npm test -- --coverage'
+      - store_artifacts:
+          # Store coverage for later use
+          path: ~/orlan/coverage
+      - run:
+          # Upload coverage to coveralls
+          name: upload-coveralls
+          command: cat ~/orlan/coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js
+          # Environment variable for a single command shell
+          environment:
+            COVERALLS_SERVICE_NAME: CircleCI
+            COVERALLS_SERVICE_JOB_ID: $CIRCLE_BUILD_NUM
