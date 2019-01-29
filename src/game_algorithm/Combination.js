@@ -20,6 +20,15 @@ export default class Combination {
         return this._cardsPlayed;
     }
 
+    // clone method
+    clone() {
+        let clone = new Combination();
+        for (let card of this.listCards()) {
+            clone.addCard(card);
+        }
+        return clone;
+    }
+
     // add a card at the end of the array
     addCard(card) {
         this._cardsPlayed.push(card);
@@ -33,6 +42,16 @@ export default class Combination {
                 this._colorPlayed.add(card.getType());
                 break;
         }
+    }
+
+    moveCard(index_from, index_to) {
+        let check = 0 <= index_from < this._cardsPlayed.length && 0 <= index_to < this._cardsPlayed.length;
+        if (check) {
+            let previousCard = this._cardsPlayed[index_from];
+            this._cardsPlayed[index_from] = this._cardsPlayed[index_to];
+            this._cardsPlayed[index_to] = previousCard;
+        }
+        return check;
     }
 
     // match criteria(s)

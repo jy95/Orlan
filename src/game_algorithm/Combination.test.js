@@ -33,6 +33,12 @@ describe('Hand Combinations tests : ', function () {
             expect(combinaison1.getValue()).toBe(0);
         });
 
+        test("Test n°6 : moveCard test", function () {
+           expect(combinaison1.moveCard(0,1)).toBe(true);
+           expect(combinaison1.listCards()[0].getType()).toBe(TYPES.JOKER);
+           expect(combinaison1.listCards()[1].getNumber()).toBe(NUMBERS.ACE);
+        });
+
     });
 
     describe("Hand Combination : Full ACE", function () {
