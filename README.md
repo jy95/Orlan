@@ -1,8 +1,8 @@
+[![Greenkeeper badge](https://badges.greenkeeper.io/jy95/Orlan.svg)](https://greenkeeper.io/)  [![Coverage Status](https://coveralls.io/repos/github/jy95/Orlan/badge.svg?branch=coveralls)](https://coveralls.io/github/jy95/Orlan?branch=coveralls)
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
-
-[![Greenkeeper badge](https://badges.greenkeeper.io/jy95/Orlan.svg)](https://greenkeeper.io/)
 
 In the project directory, you can run:
 
