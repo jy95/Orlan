@@ -1,6 +1,5 @@
 import Combination from './Combination'
-import Card from './Card'
-import {TYPES, NUMBERS} from "./Card"
+import Card , {TYPES, NUMBERS} from './Card'
 
 describe('Hand Combinations tests : ', function () {
 

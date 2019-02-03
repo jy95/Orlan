@@ -1,7 +1,5 @@
 import {TYPES, NUMBERS} from './Card';
 
-const MIN_CARD_AMOUNT = 3;
-
 export default class Combination {
 
     constructor() {
@@ -9,6 +7,9 @@ export default class Combination {
         this._colorPlayed = new Set();
         this._jokerPositions = [];
     }
+
+    // minimal amount of card required for combi
+    static MIN_CARD_AMOUNT = 3;
 
     // the correct order of card for successive combination
     static correct_order() {
@@ -60,7 +61,7 @@ export default class Combination {
     }
 
     requiredCardAmount() {
-        return this._cardsPlayed.length >= MIN_CARD_AMOUNT;
+        return this._cardsPlayed.length >= Combination.MIN_CARD_AMOUNT;
     }
 
     // no two successive JOKER

@@ -1,15 +1,4 @@
-import Card from './Card';
 import Combination from './Combination';
-
-// partition function
-function partition(collection, predicate) {
-    return collection.reduce(
-        (result, value) => {
-            result[predicate(value) ? 0 : 1].push(value);
-            return result;
-        }, [[], []]
-    )
-}
 
 export default class Player {
     static MIN_REQUIRED_VALUE = 51;
@@ -27,6 +16,10 @@ export default class Player {
         this._tempCombinations = [];
         this._checkedCombinations = [];
         this._hasRequiredAmount = false;
+    }
+
+    set setCards(cards) {
+        this._cards = cards;
     }
 
     listCards() {
@@ -82,7 +75,17 @@ export default class Player {
     }
 
     validateCombinations() {
-        let partition = partition(this._tempCombinations, (combi) => combi.verification());
+        // partition function
+        function partitionFct(collection, predicate) {
+            return collection.reduce(
+                (result, value) => {
+                    result[predicate(value) ? 0 : 1].push(value);
+                    return result;
+                }, [[], []]
+            )
+        }
+
+        let partition = partitionFct(this._tempCombinations, (combi) => combi.verification());
         let count = partition[0].reduce( (sum, combi) => sum + combi.getValue(), 0);
         let check = (this._hasRequiredAmount || count >= Player.MIN_REQUIRED_VALUE);
 
