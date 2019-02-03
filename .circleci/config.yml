@@ -7,6 +7,11 @@ jobs: # a collection of steps
     steps: # a collection of executable commands
       - checkout # special step to check out source code to working directory
       - run:
+          name: Setup Environment Variables
+          command: |
+            echo 'export COVERALLS_SERVICE_JOB_ID="$CIRCLE_BUILD_NUM"' >> $BASH_ENV
+            echo 'export COVERALLS_SERVICE_NAME="CircleCI"' >> $BASH_ENV
+      - run:
           name: update-npm
           command: 'sudo npm install -g npm@latest'
       - restore_cache: # special step to restore the dependency cache
@@ -29,7 +34,3 @@ jobs: # a collection of steps
           # Upload coverage to coveralls
           name: upload-coveralls
           command: cat ~/orlan/coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js
-          # Environment variable for a single command shell
-          environment:
-            COVERALLS_SERVICE_NAME: CircleCI
-            COVERALLS_SERVICE_JOB_ID: $CIRCLE_BUILD_NUM
