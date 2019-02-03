@@ -1,4 +1,4 @@
-[![Greenkeeper badge](https://badges.greenkeeper.io/jy95/Orlan.svg)](https://greenkeeper.io/)  [![Coverage Status](https://coveralls.io/repos/github/jy95/Orlan/badge.svg?branch=coveralls)](https://coveralls.io/github/jy95/Orlan?branch=coveralls)
+[![Greenkeeper badge](https://badges.greenkeeper.io/jy95/Orlan.svg)](https://greenkeeper.io/)  [![Coverage Status](https://img.shields.io/coveralls/github/jy95/Orlan.svg?style=flat)](https://coveralls.io/github/jy95/Orlan?branch=coveralls)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
