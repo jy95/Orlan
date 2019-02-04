@@ -18,10 +18,14 @@ describe('Player tests : ', function () {
         new Card(TYPES.DIAMONDS, 9)
     ];
 
+    // a copy for test
+    let copy = [];
+    cards.forEach( (card) => copy.push(card.clone()) );
+
     it("Not enough combination value", () => {
         let player = new Player();
         player.initGame();
-        player.setCards = cards;
+        player.setCards = copy;
         // switch place for KING DIAMONDS
         player.moveCard(4,5);
         // set up combi
@@ -36,6 +40,23 @@ describe('Player tests : ', function () {
         expect(player.tempCombinations()).not.toHaveLength(0);
         // validate
         expect(player.validateCombinations()).toBe(false);
+    });
+
+    it("Enough combination value with complex tests", () => {
+        let player = new Player();
+        player.initGame();
+        player.setCards = cards;
+        expect(player.listCards()).toEqual(cards);
+        // set up combi
+        for (let combIndex = 0; combIndex < 3; combIndex++) {
+            player.createTempCombination();
+            for (let i = 0; i < 3; i++) {
+                player.addCardToTempCombination(0, combIndex);
+            }
+        }
+        // validate
+        expect(player.validateCombinations()).toBe(true);
+        expect(player.removeTempCombination(0)).toBe(true);
     });
 
 });

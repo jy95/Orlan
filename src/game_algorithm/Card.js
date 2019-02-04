@@ -41,4 +41,8 @@ export default class Card {
             && 'getNumber' in other) ?
             (other.getType() === this.getType() && other.getNumber() === this.getNumber()) : false;
     }
+
+    clone() {
+        return (this.getType() === TYPES.JOKER) ? new Card() : new Card(this.getType(), this.getNumber());
+    }
 }

@@ -46,7 +46,11 @@ export default class Combination {
     }
 
     moveCard(index_from, index_to) {
-        let check = 0 <= index_from < this._cardsPlayed.length && 0 <= index_to < this._cardsPlayed.length;
+        let check = 0 <=
+            index_from &&
+            index_from < this._cardsPlayed.length &&
+            0 <= index_to &&
+            index_to < this._cardsPlayed.length;
         if (check) {
             let previousCard = this._cardsPlayed[index_from];
             this._cardsPlayed[index_from] = this._cardsPlayed[index_to];
