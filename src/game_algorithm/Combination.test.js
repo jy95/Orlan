@@ -38,6 +38,10 @@ describe('Hand Combinations tests : ', function () {
            expect(combinaison1.listCards()[1].getNumber()).toBe(NUMBERS.ACE);
         });
 
+        test("Test n°7 : Clone", function () {
+           expect(combinaison1.clone().listCards()).toEqual(combinaison1.listCards())
+        });
+
     });
 
     describe("Hand Combination : Full ACE", function () {

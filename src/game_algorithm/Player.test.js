@@ -27,7 +27,8 @@ describe('Player tests : ', function () {
         player.initGame();
         player.setCards = copy;
         // switch place for KING DIAMONDS
-        player.moveCard(4,5);
+        expect(player.moveCard(4, -1)).toBe(false);
+        expect(player.moveCard(4,5)).toBe(true);
         // set up combi
         for (let combIndex = 0; combIndex < 2; combIndex++) {
             player.createTempCombination();
