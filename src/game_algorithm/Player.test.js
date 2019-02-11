@@ -26,6 +26,7 @@ describe('Player tests : ', function () {
         let player = new Player();
         player.initGame();
         player.setCards = copy;
+        expect(player.removeTempCombination(-1)).toBe(false);
         // switch place for KING DIAMONDS
         expect(player.moveCard(4, -1)).toBe(false);
         expect(player.moveCard(4,5)).toBe(true);
