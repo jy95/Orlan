@@ -79,7 +79,7 @@ describe('Player tests : ', function () {
         player.setCards = hand;
 
         // set up the first 3 combin
-        for(let combIndex = 0; combIndex < 3; i++){
+        for(let combIndex = 0; combIndex < 3; combIndex++){
             player.createTempCombination();
             for(let i = 0; i < 3; i++){
                 player.addCardToTempCombination(0, combIndex);
@@ -88,7 +88,7 @@ describe('Player tests : ', function () {
         // validate
         expect(player.validCombinations()).toBe(true);
         // add the two combi from additionalCards
-        for(let combIndex = 0; combIndex < 2; i++){
+        for(let combIndex = 0; combIndex < 2; combIndex++){
             player.createTempCombination();
             for(let i = 0; i < 3; i++){
                 player.addCardToTempCombination(0, combIndex);
