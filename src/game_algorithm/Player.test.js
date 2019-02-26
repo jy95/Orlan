@@ -61,4 +61,41 @@ describe('Player tests : ', function () {
         expect(player.removeTempCombination(0)).toBe(true);
     });
 
+    it("Validate combinations after successufully do it the first time", () => {
+        // new cards to simulate this case
+        let additionalCards = [
+            // a good combi with value 6
+            new Card(TYPES.CLUBS, NUMBERS.ACE),
+            new Card(TYPES.CLUBS, 2),
+            new Card(TYPES.CLUBS, 3),
+            // a wrong combination
+            new Card(TYPES.HEARTS, NUMBERS.JACK),
+            new Card(TYPES.HEARTS, NUMBERS.KING),
+            new Card(TYPES.HEARTS, NUMBERS.QUEEN)
+        ];
+        let hand = cards.concat(additionalCards);
+        let player = new Player();
+        player.initGame();
+        player.setCards = hand;
+
+        // set up the first 3 combin
+        for(let combIndex = 0; i < 3; i++){
+            player.createTempCombination();
+            for(let i = 0; i < 3; i++){
+                player.addCardToTempCombination(0, combIndex);
+            }
+        }
+        // validate
+        expect(player.validCombinations()).toBe(true);
+        // add the two combi from additionalCards
+        for(let combIndex = 0; i < 2; i++){
+            player.createTempCombination();
+            for(let i = 0; i < 3; i++){
+                player.addCardToTempCombination(0, combIndex);
+            }
+        }
+        //
+        expect(player.validateCombinations()).toBe(true);
+    });
+
 });
